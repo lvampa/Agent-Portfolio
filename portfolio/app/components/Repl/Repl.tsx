@@ -39,7 +39,9 @@ export default function Repl() {
   return (
     <form onSubmit={ handleSubmit } className="flex items-center gap-2">
       <span className="select-none">$</span>
+      <label htmlFor="input-prompt" className="sr-only">Input Prompt</label>
       <Input
+        id="input-prompt"
         ref={inputElementRef}
         value={ command }
         onChange={ (e) => setCommand(e.target.value) }
