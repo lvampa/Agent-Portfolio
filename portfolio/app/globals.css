@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+    --color-background: #212121;
+}
