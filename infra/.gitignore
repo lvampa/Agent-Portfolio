@@ -1,0 +1,31 @@
+# OpenTofu / Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.out
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Variables with secrets (keep example, ignore real)
+*.tfvars
+*.tfvars.json
+!terraform.tfvars.example
+
+# Certificate files (sensitive – do not commit)
+certs/
+!certs/.gitkeep
+*.pem
+*.key
+*.p12
+*.csr
+
+# OS / editor
+.DS_Store
+*.swp
+*.swo
+*~
