@@ -1,0 +1,46 @@
+# Local .terraform directories
+**/.terraform/*
+**/.terraform.lock.hcl
+
+# OpenTofu / Terraform state files
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+
+# Infrastructure secrets
+infra/modules/ec2/file/*
+
+# Certificate files (ALB HTTPS – do not commit)
+infra/certs/
+
+# Crash logs
+crash.log
+
+# Plan files
+*.tfplan
+*.out
+
+# Sensitive files (credentials, private keys)
+*.pem
+*.key
+*.p12
+*.csr
+
+# Environment files
+.env
+.env.*
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backup or temp files
+*~
+*.bak

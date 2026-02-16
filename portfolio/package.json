@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "jest --selectProjects app lib",
-    "test:app": "jest --selectProjects app",
-    "test:lib": "jest --selectProjects lib"
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "jest --selectProjects app lib"
   },
   "dependencies": {
     "axios": "^1.13.5",
@@ -17,11 +17,11 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.548.0",
     "motion": "^12.23.24",
-    "next": "16.0.1",
+    "next": "^16.1.6",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "swr": "^2.4.0",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "ua-parser-js": "^2.0.9"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -36,9 +36,12 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "16.0.1",
+    "eslint-config-prettier": "^10.1.8",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8.5.6",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.1.17",
     "ts-jest": "^29.4.5",
     "ts-node": "^10.9.2",
