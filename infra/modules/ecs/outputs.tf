@@ -1,7 +1,11 @@
-output "vpc_id" {
-  value = aws_vpc.this.id
+output "ecs_cluster_name" {
+  value = aws_ecs_cluster.this.name
 }
 
-output "public_subnet_ids" {
-  value = aws_subnet.public[*].id
+output "ecs_cluster_id" {
+  value = aws_ecs_cluster.this.id
+}
+
+output "ecs_service_name" {
+  value = aws_ecs_service.n8n.name
 }
