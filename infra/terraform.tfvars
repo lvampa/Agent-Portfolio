@@ -1,1 +1,0 @@
-ec2_keypair_name = "portfolio-ecs-key"

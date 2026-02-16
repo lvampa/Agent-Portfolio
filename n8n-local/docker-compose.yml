@@ -27,6 +27,7 @@ services:
       - N8N_HOST=${N8N_HOST}
       - N8N_PORT=${N8N_PORT}
       - N8N_PROTOCOL=${N8N_PROTOCOL}
+      - N8N_CORS_ORIGIN=${N8N_CORS_ORIGIN}
       - NODE_ENV=${NODE_ENV}
     ports:
       - "5678:5678"
