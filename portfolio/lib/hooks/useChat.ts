@@ -1,8 +1,7 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import { chatClient } from '@lib/api/chatClient';
-import { Client } from '@lib/api/types';
+import { chatClient } from '@lib/api';
 import { UseChat } from './types';
 
 export default function useChat(): UseChat {
@@ -27,10 +26,5 @@ export default function useChat(): UseChat {
     [chatClient]
   );
 
-  const reset = useCallback(() => {
-    setError(null);
-    setData(null);
-  }, []);
-
-  return { sendMessage, isLoading, error, data, reset };
+  return { sendMessage, isLoading, error, data};
 }

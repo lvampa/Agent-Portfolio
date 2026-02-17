@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import styles from "./repl.module.css"
-import { HistoryItem } from "@/app/types/history";
+import styles from "../Repl/repl.module.css"
+import { HISTORY_ITEM_TYPES } from "./constants";
 import { recordStorage } from "@app/utils/storage";
 import { eventBus } from "@/lib/event-bus";
 import { EVENTS } from "@app/constants/events";
-import { HISTORY_ITEM_TYPES } from "@app/constants/history";
+import { HistoryItem } from "./types";
 
-export default function History() {
+export function History() {
   const [history, setHistory] = useState<HistoryItem[]>([]);
 
   useEffect(() => {
-    setHistory(recordStorage.getRecords() ?? []);
+    // setHistory(recordStorage.getRecords() ?? []);
 
     const unregisterSubmit = eventBus.on(EVENTS.SUBMIT, submitHandler);
     const unregisterCompete = eventBus.on(EVENTS.EXECUTION_COMPLETE, completeHandler);
@@ -29,14 +29,14 @@ export default function History() {
   }
 
   return history.map((item: HistoryItem, key) =>
-    <div key={ item.msg + key } className="history-container">
+    <div key={ item.message + key } className="history-container">
       {item.type === HISTORY_ITEM_TYPES.COMMAND ? (
         <div className={ styles.inputContainer }>
           <span>$</span>
-          <span>{ item.msg }</span>
+          <span>{ item.message }</span>
         </div>
       ): (
-        <div><p>{ item.msg }</p></div>
+        <div><p>{ item.message }</p></div>
       )}
     </div>
   )

@@ -2,7 +2,7 @@ import { Input } from "@/components/ui/input"
 import React, { useEffect, useRef, useState } from "react"
 import styles from "./repl.module.css"
 import { eventBus } from "@/lib/event-bus"
-import { events } from "@app/constants/events"
+import { EVENTS } from "@app/constants/events"
 import { HistoryItem } from "@app/types/history"
 import { HISTORY_ITEM_TYPES } from "@app/constants/history";
 
@@ -29,7 +29,7 @@ export default function ReplInput({isVisible}: {
       msg: value,
       type: HISTORY_ITEM_TYPES.COMMAND
     }
-    eventBus.emit(events.SUBMIT, submitData)
+    eventBus.emit(EVENTS.SUBMIT, submitData)
   }
 
   function handleClickOnPage() {

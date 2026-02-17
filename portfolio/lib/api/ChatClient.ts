@@ -22,6 +22,3 @@ export class ChatClient implements ClientType {
     return this.endpoint;
   }
 }
-
-export const client = new ChatClient(process.env.NEXT_PUBLIC_CHAT_WEBHOOK_URL ?? '');
-

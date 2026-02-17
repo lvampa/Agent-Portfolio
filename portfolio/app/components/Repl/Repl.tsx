@@ -3,7 +3,7 @@ import ReplInput from "@/app/components/Repl/ReplInput";
 import ReplLoading from "@/app/components/Repl/ReplLoading";
 import History from "@/app/components/Repl/History";
 import { eventBus } from "@/lib/event-bus";
-import { events } from "@app/constants/events";
+import { EVENTS } from "@app/constants/events";
 import { HistoryItem } from "@app/types/history";
 import { HISTORY_ITEM_TYPES } from "@app/constants/history";
 
@@ -11,7 +11,7 @@ export default function Repl() {
   const [isExecuting, setIsExecuting] = useState(false);
 
   useEffect(() => {
-    const unRegisterFn = eventBus.on(events.SUBMIT, (data) => executeReplCommand(data));
+    const unRegisterFn = eventBus.on(EVENTS.SUBMIT, (data) => executeReplCommand(data));
     return () => unRegisterFn();
   }, []);
 
@@ -25,7 +25,7 @@ export default function Repl() {
 
     setTimeout(() => {
       setIsExecuting(false);
-      eventBus.emit(events.EXECUTION_COMPLETE, result);
+      eventBus.emit(EVENTS.EXECUTION_COMPLETE, result);
     }, 1000)
   }
 
