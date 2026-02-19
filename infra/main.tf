@@ -29,12 +29,39 @@ module "ec2" {
   cert_private_key_b64 = base64encode(file("${path.root}/${var.cert_private_key_path}"))
 }
 
+# Static frontend: S3 bucket with public read, index.html
+module "s3" {
+  source       = "./modules/s3"
+  project_name = var.project_name
+  bucket_name  =  var.cloudflare_frontend_record_name
+}
+
 # A record pointing at the EC2 instance (Elastic IP)
 resource "cloudflare_dns_record" "agent_subdomain_record" {
   zone_id = var.cloudflare_zone_id
   name    = var.cloudflare_a_record_name
   type    = "A"
   content = module.ec2.public_ip
+  ttl     = 1
+  proxied = true
+}
+
+# CNAME for frontend → S3 website endpoint
+resource "cloudflare_dns_record" "frontend" {
+  zone_id = var.cloudflare_zone_id
+  name    = var.cloudflare_frontend_record_name
+  type    = "CNAME"
+  content = module.s3.website_endpoint
+  ttl     = 1
+  proxied = true
+}
+
+# CNAME for www → root domain
+resource "cloudflare_dns_record" "frontend_www" {
+  zone_id = var.cloudflare_zone_id
+  name    = "www"
+  type    = "CNAME"
+  content = var.cloudflare_frontend_record_name
   ttl     = 1
   proxied = true
 }

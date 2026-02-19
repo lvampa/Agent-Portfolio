@@ -21,4 +21,9 @@ export class ChatClient implements ClientType {
   getWebhookUrl(): string {
     return this.endpoint;
   }
+<<<<<<< Updated upstream:portfolio/lib/api/ChatClient.ts
 }
+=======
+}
+
+>>>>>>> Stashed changes:portfolio/lib/api/chatClient.ts

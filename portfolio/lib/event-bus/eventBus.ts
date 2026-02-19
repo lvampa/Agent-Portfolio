@@ -33,5 +33,3 @@ export function createEventBus(): EventBus {
   }
 }
 
-export const eventBus = createEventBus();
-
