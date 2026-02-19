@@ -8,6 +8,11 @@ import {
 
 import Repl from "@/app/components/Repl/Repl"
 
+import { UAParser } from 'ua-parser-js';
+
+const parser = new UAParser();
+console.log(parser.getBrowser());
+
 export default function Home() {
 
   return (

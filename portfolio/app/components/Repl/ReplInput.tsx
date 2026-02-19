@@ -2,11 +2,17 @@ import { Input } from "@/components/ui/input"
 import React, { useEffect, useRef, useState } from "react"
 import styles from "./repl.module.css"
 import { eventBus } from "@/lib/event-bus"
+<<<<<<< Updated upstream
 import { EVENTS } from "@app/constants/events"
 import { HistoryItem } from "@app/types/history"
 import { HISTORY_ITEM_TYPES } from "@app/constants/history";
+=======
+import { EventBusSubmitEvent } from "@app/types/events"
+import { EVENTS } from "@app/constants/events"
+>>>>>>> Stashed changes
 
 // TODO - form validation
+// @doc - Component emits submit event on form submit.
 export default function ReplInput({isVisible}: {
   isVisible: boolean;
 }) {
@@ -25,9 +31,9 @@ export default function ReplInput({isVisible}: {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setValue("");
-    const submitData: HistoryItem = {
-      msg: value,
-      type: HISTORY_ITEM_TYPES.COMMAND
+    const submitData: EventBusSubmitEvent = {
+      message: value,
+      type: EVENTS.SUBMIT
     }
     eventBus.emit(EVENTS.SUBMIT, submitData)
   }
