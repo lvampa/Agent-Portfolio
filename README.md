@@ -128,6 +128,30 @@ docker compose down
 
 ---
 
+## Deployments
+
+Frontend deploys are automated via GitHub Actions. Pushing or merging into the `production` branch:
+
+1. Runs `npm ci` and `npm run build` in `portfolio/`
+2. Syncs the built static export (`portfolio/out`) to the S3 bucket with `aws s3 sync ... --delete`
+
+Workflow file: [`.github/workflows/deploy-frontend.yml`](.github/workflows/deploy-frontend.yml).
+
+### Required GitHub secrets
+
+In the repo: **Settings → Secrets and variables → Actions**, add:
+
+| Secret | Description |
+|--------|-------------|
+| `AWS_ACCESS_KEY_ID` | IAM access key for the deploy user |
+| `AWS_SECRET_ACCESS_KEY` | IAM secret key |
+| `AWS_REGION` | Bucket region (e.g. `us-east-1`) |
+| `S3_BUCKET` | S3 bucket name (from Terraform, e.g. `project_name-frontend`) |
+
+The IAM user must have at least `s3:PutObject`, `s3:GetObject`, `s3:DeleteObject`, and `s3:ListBucket` on the frontend bucket.
+
+---
+
 ## Recommended Workflow
 
 1. Run `n8n-local` when building or testing workflows locally.
