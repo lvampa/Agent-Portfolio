@@ -8,6 +8,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Debug
+        run: |
+          echo "Account ID: ${{ secrets.AWS_ACCOUNT_ID }}"
+          echo "Role: ${{ secrets.DEPLOYMENT_ROLE }}"
+          echo "Bucket: ${{ secrets.S3_BUCKET }}"
+          echo "Region: ${{ vars.AWS_REGION }}"
+          echo "Role: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.DEPLOYMENT_ROLE }}"
+
       - name: Checkout
         uses: actions/checkout@v4
 
