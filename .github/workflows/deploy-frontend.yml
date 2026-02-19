@@ -10,11 +10,11 @@ jobs:
     steps:
       - name: Debug
         run: |
-          echo "Account ID: ${{ secrets.AWS_ACCOUNT_ID }}"
-          echo "Role: ${{ secrets.DEPLOYMENT_ROLE }}"
-          echo "Bucket: ${{ secrets.S3_BUCKET }}"
+          echo "Account ID: ${{ vars.AWS_ACCOUNT_ID }}"
+          echo "Role: ${{ vars.DEPLOYMENT_ROLE }}"
+          echo "Bucket: ${{ vars.S3_BUCKET }}"
           echo "Region: ${{ vars.AWS_REGION }}"
-          echo "Role: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.DEPLOYMENT_ROLE }}"
+          echo "Role: arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/${{ vars.DEPLOYMENT_ROLE }}"
 
       - name: Checkout
         uses: actions/checkout@v4
