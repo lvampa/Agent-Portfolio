@@ -91,3 +91,8 @@ variable "cloudflare_a_record_name" {
   description = "DNS name for the A record (e.g. 'n8n' for n8n.example.com, or '@' for apex)"
   type        = string
 }
+
+variable "cloudflare_frontend_record_name" {
+  description = "DNS name for the frontend CNAME to CloudFront (e.g. 'www' or 'app')"
+  type        = string
+}
