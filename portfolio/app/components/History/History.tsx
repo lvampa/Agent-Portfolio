@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../Repl/repl.module.css"
 import { HISTORY_ITEM_TYPES } from "./constants";
-import { recordStorage } from "@app/utils/storage";
 import { eventBus } from "@/lib/event-bus";
 import { EVENTS } from "@app/constants/events";
 import { HistoryItem } from "./types";
